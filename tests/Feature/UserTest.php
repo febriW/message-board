@@ -15,7 +15,7 @@ class UserTest extends TestCase
      */
     public function test_list_users()
     {
-        $user = User::factory()->counte(5)->create();
+        $user = User::factory()->count(5)->create();
 
         $response = $this->get($this->path);
         $response->assertOk();
@@ -31,7 +31,13 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', ['name' => $user->name]);
     }
 
-    // public function test_search_user(){
+    public function test_create_same_email_user(){
+        $user = User::factory()->make();
 
-    // }
+        $this->postJson($this->path, $user->toArray());
+        
+        $this->postJson($this->path, $user->toArray())
+            ->assertConflict();
+
+    }
 }

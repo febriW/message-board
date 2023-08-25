@@ -20,38 +20,40 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+    * @param  \App\Http\Requests\StorePersonRequest  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
         $user = User::create($data);
 
-        return response()->json($user, 201);
+        return response()->json($user, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
-    {
-        //
-    }
+    // public function show(User $user)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
-    {
-        $data = $request->validated();
-        $user->update($data);
-        return response()->json($user);
-    }
+    // public function update(UpdateUserRequest $request, User $user)
+    // {
+    //     $data = $request->validated();
+    //     $user->update($data);
+    //     return response()->json($user);
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
-    {
-        //
-    }
+    // public function destroy(User $user)
+    // {
+    //     //
+    // }
 }
