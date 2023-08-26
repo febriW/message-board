@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Response;
+use App\Exceptions\DatabaseException;
 
 class UserController extends Controller
 {
@@ -26,7 +27,13 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $user = User::create($data);
+        $check = User::where('email',$data['email'])->first();
+
+        try{
+            $user = User::create($data);
+        }catch (\Throwable $e){
+            throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
+        }
 
         return response()->json($user, Response::HTTP_CREATED);
     }
