@@ -24,20 +24,48 @@ class UserTest extends TestCase
     }
 
     public function test_create_user() {
-        $user = User::factory()->make();
+        $user = [
+            "name" => "2",
+            "email" => "test@test.com"
+        ];
 
-        $this->postJson($this->path, $user->toArray())
+        $this->postJson($this->path, $user)
             ->assertCreated();
         
-        $this->assertDatabaseHas('users', ['name' => $user->name]);
+        $this->assertDatabaseHas('users', ['name' => $user['name']]);
     }
 
     public function test_create_same_email_user(){
-        $user = User::factory()->make();
+        $user = [
+            "name" => "2",
+            "email" => "test@test.com"
+        ];
 
-        $this->postJson($this->path, $user->toArray());
+        $this->postJson($this->path, $user);
         
-        $this->postJson($this->path, $user->toArray())
+        $this->postJson($this->path, $user)
             ->assertConflict();
+    }
+
+    public function test_not_valid_input()
+    {
+        $user = [
+            "name" => 2,
+            "email" => "test@test.com"
+        ];
+
+        $this->postJson($this->path, $user)
+            ->assertUnprocessable();
+    }
+
+    public function test_not_valid_email()
+    {
+        $user = [
+            "name" => "Testing",
+            "email" => "test@test.jp"
+        ];
+
+        $this->postJson($this->path, $user)
+            ->assertUnprocessable();
     }
 }
