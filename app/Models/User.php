@@ -12,4 +12,8 @@ class User extends Model
         'name',
         'email',
     ];
+
+    public function message(): HasMany {
+        return $this->hasMany(Message::class);
+    }
 }
