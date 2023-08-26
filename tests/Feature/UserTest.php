@@ -9,6 +9,7 @@ use App\Models\User;
 
 class UserTest extends TestCase
 {
+    use RefreshDatabase;
     protected $path = '/api/user';
     /**
      * A basic feature test example.
@@ -38,6 +39,5 @@ class UserTest extends TestCase
         
         $this->postJson($this->path, $user->toArray())
             ->assertConflict();
-
     }
 }
