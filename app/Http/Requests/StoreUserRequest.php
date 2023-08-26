@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use App\Rules\EmailDomain;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 
 class StoreUserRequest extends FormRequest
 {
@@ -23,7 +27,18 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => 'required | string',
-            'email' => 'required | string'
+            'email' => ['required','email', new EmailDomain]
         ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator) {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
