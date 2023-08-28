@@ -1,0 +1,9 @@
+<template>
+    <lord-icon
+        src="https://cdn.lordicon.com/iepbfivp.json"
+        trigger="loop"
+        delay="2000"
+        colors="primary:#121331,secondary:#4bb3fd,tertiary:#d1e3fa"
+        style="width:250px;height:250px">
+    </lord-icon>
+</template>

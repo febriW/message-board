@@ -1,0 +1,11 @@
+<template>
+    <div>
+        <lord-icon
+            src="https://cdn.lordicon.com/flvisirw.json"
+            trigger="loop"
+            delay="2000"
+            colors="primary:#646e78,secondary:#4bb3fd,tertiary:#ebe6ef"
+            style="width:125px;height:125px">
+        </lord-icon>
+    </div>
+</template>

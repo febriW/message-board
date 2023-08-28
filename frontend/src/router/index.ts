@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import ListMessage from '@/views/ListMessage.vue'
 
 const routes = [
   {
-    path: '/test',
-    name: 'test',
-    component: 'test'
+    path: '/',
+    name: 'listMessage',
+    component: ListMessage
   }
 ]
 
