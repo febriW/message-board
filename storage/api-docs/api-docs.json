@@ -13,12 +13,54 @@
         "version": "0.0.1"
     },
     "paths": {
-        "/": {
+        "/api/message": {
             "get": {
-                "description": "Home page",
+                "tags": [
+                    "message"
+                ],
+                "summary": "Returns a message API response",
+                "description": "A sample message to test out the API",
+                "operationId": "message",
                 "responses": {
-                    "default": {
-                        "description": "Welcome page"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Return list users",
+                "description": "Sample Response",
+                "operationId": "user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Create users",
+                "description": "A sample user to test out the API",
+                "operationId": "089999749fbdec98922de2f74ba8d540",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
