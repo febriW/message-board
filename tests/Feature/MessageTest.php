@@ -33,10 +33,9 @@ class MessageTest extends TestCase
     public function test_create_message_not_validated()
     {
         $message = [
-            'user_id' => '2',
-            'message' => fake()->text(300),
+            'user_id' => 2,
+            'message' => fake()->sentence(600)
         ];
-
         $this->postJson($this->path, $message)
             ->assertUnprocessable();
     }
