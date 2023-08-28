@@ -47,7 +47,7 @@ class MessageTest extends TestCase
         ]);
         $message = Message::factory()->create([
             'user_id' => $user->id,
-            'message' => fake()->text(200),
+            'message' => fake()->text(50),
         ]);
 
         $this->postJson($this->path .'/'. 'search',[

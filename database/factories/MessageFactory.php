@@ -19,7 +19,7 @@ class MessageFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'message' => fake()->text(200),
+            'message' => fake()->text(50),
         ];
     }
 }
