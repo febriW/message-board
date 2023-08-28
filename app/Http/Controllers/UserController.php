@@ -11,12 +11,25 @@ use App\Exceptions\DatabaseException;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/user",
+     *     tags={"user"},
+     *     summary="Return list users",
+     *     description="Sample Response",
+     *     operationId="user",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\MediaType(
+     *            mediaType="application/json",
+     *         )
+     *     )
+     * )
      */
     public function index()
     {   
         $users = User::all();
-        return response()->json($users, 200);
+        return response()->json($users, Response::HTTP_OK);
     }
 
     /**
@@ -24,6 +37,21 @@ class UserController extends Controller
     * @param  \App\Http\Requests\StorePersonRequest  $request
     * @return \Illuminate\Http\Response
     */
+    /**
+     * @OA\Post(
+     *     path="/api/user",
+     *     tags={"user"},
+     *     summary="Create users",
+     *     description="A sample user to test out the API",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\MediaType(
+     *            mediaType="application/json",
+     *         )
+     *     )
+     * )
+     */
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
