@@ -34,7 +34,7 @@ class MessageTest extends TestCase
     {
         $message = [
             'user_id' => 2,
-            'message' => fake()->sentence(600)
+            'message' => fake()->sentence(100)
         ];
         $this->postJson($this->path, $message)
             ->assertUnprocessable();
@@ -76,7 +76,7 @@ class MessageTest extends TestCase
 
         $message = Message::factory()->create([
             'user_id' => $user->id,
-            'message' => fake()->text(200),
+            'message' => fake()->text(50),
         ]);
         $this->patchJson($this->path .'/'. $message->id, ['message' => $message->message])
             ->assertOk();
@@ -90,7 +90,7 @@ class MessageTest extends TestCase
 
         $message = Message::factory()->create([
             'user_id' => $user->id,
-            'message' => fake()->text(200),
+            'message' => fake()->text(50),
         ]);
 
         $this->delete($this->path .'/'. $message->id)
