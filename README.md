@@ -64,3 +64,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Swagger
+- localhost:{port when deploy}/api/documentation
+
+
+## To running Application
+- cp .env.example .env ( and then setup the enviroment )
+- composer install or update
+- php artisan key:generate
+- php artisan migrate
+- php artisan test ( untuk testing )
+- php artisan db:seed --class=UserSeeder lalu php artisan db:seed --class=MessageSeeder
+- php artisan serve --port{port ex 8000}
+- Laravel ready
+- open new terminal
+- cd frontend/
+- npm update / install
+- npm run dev
+- open link for front-end default {http://localhost:5173}

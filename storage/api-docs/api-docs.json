@@ -18,9 +18,93 @@
                 "tags": [
                     "message"
                 ],
-                "summary": "Returns a message API response",
-                "description": "A sample message to test out the API",
+                "summary": "Return 12 latest record",
+                "description": "Endpoint latest message record",
                 "operationId": "message",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "message"
+                ],
+                "summary": "Create Message",
+                "description": "Endpoint to create new message",
+                "operationId": "ee15771b1dadd0efb04ebd263be4f168",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message/{params}": {
+            "get": {
+                "tags": [
+                    "message"
+                ],
+                "summary": "Get Message",
+                "description": "Endpoint get spesific message using key",
+                "operationId": "1275f9e891bd151b6520f2043b03e7a3",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "message"
+                ],
+                "summary": "Delete data message",
+                "description": "Endpoint to delete message",
+                "operationId": "fef02ce5360e9cb9d9c04473b6294f2e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "message"
+                ],
+                "summary": "Update data message",
+                "description": "Endpoint to update message",
+                "operationId": "5d5f61bdb2bdf5af372ae34d71ff9208",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message/search": {
+            "post": {
+                "tags": [
+                    "message"
+                ],
+                "summary": "Create users",
+                "description": "A sample user to test out the API",
+                "operationId": "731916d6e9fa2feb9506330635d888fe",
                 "responses": {
                     "200": {
                         "description": "OK",

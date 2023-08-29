@@ -69,30 +69,4 @@ class UserController extends Controller
         }
 
     }
-
-    /**
-     * Display the specified resource.
-     */
-    // public function show(User $user)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(UpdateUserRequest $request, User $user)
-    // {
-    //     $data = $request->validated();
-    //     $user->update($data);
-    //     return response()->json($user);
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy(User $user)
-    // {
-    //     //
-    // }
 }

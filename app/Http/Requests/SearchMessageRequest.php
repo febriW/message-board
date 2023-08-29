@@ -24,7 +24,8 @@ class SearchMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'params' => 'required | string | max:200'
+            'params' => 'required | string | max:200',
+            'page' => 'integer'
         ];
     }
 

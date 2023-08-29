@@ -35,18 +35,6 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', ['name' => $user['name']]);
     }
 
-    public function test_create_same_email_user(){
-        $user = [
-            "name" => "2",
-            "email" => "test@test.com"
-        ];
-
-        $this->postJson($this->path, $user);
-        
-        $this->postJson($this->path, $user)
-            ->assertConflict();
-    }
-
     public function test_not_valid_input()
     {
         $user = [

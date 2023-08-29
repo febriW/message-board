@@ -3,12 +3,12 @@ import axios from '@/plugins/axios'
 import type MessageType from '@/types/MessageType'
 import type CreateMessageType from "@/types/CreateMessageTypes"
 import type ApiMessageResponseType from "@/types/ApiMessageResponseType"
+import type SearchMessageType from "@/types/SearchMessageType"
 import type ApiUserResponse from "@/types/ApiUserResponseType"
-import type UserType from '@/types/UserType'
 
 export const useMessageStore = defineStore('message', {
     state: () => ({
-        message: [] as MessageType[],
+        message: [] as MessageType[]
     }),
     actions: {
         async fetchData() {
@@ -32,6 +32,19 @@ export const useMessageStore = defineStore('message', {
                         "message" : params.message 
                     })
                 })
+            } catch (error) {
+                console.error(error)
+            }
+        },
+
+        async searchMessage(params: SearchMessageType){
+            try {
+                const response = await axios.post<ApiMessageResponseType>('message/search', {
+                    "params" : params.params,
+                    "page": params.pages
+                })
+                const {data} = response.data
+                this.message.push(...data)
             } catch (error) {
                 console.error(error)
             }
