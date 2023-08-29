@@ -31,8 +31,15 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $message = Message::all();
-        return response()->json($message, Response::HTTP_OK);
+        try {
+            $result = User::select('users.name', 'users.email', 'messages.message', 'messages.id')
+                ->LeftJoin('messages', 'users.id', '=', 'messages.user_id')
+                ->get();
+        }catch (\Throwable $e){
+            echo $e->getMessage();
+            throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
+        }
+        return response()->json(['data' => $result], Response::HTTP_OK);
     }
 
     /**

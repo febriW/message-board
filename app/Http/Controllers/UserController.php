@@ -55,7 +55,10 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $check = User::where('email',$data['email'])->first();
+        $check = User::where('email', $data['email'])->first();
+
+        if($check)
+            return response()->json(["message" => "Account already exist"], 409);
 
         try{
             $user = User::create($data);
