@@ -5,7 +5,9 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="application/javascript" src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-    <title>Message App</title>
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="stylesheet" href="/assets/index.css">
   </head>
   <body>
     <div id="app"></div>
