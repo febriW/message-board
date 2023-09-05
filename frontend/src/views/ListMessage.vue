@@ -42,7 +42,7 @@ const params = ref({
 
 const sendCreateMessage = async () => {
     await messageStore.createMessage(form.value).then(()=>{
-        setTimeout(()=>{location.reload()}, 500)
+        // setTimeout(()=>{location.reload()}, 500)
     })
 }
 
@@ -62,7 +62,6 @@ const dataMessage = computed(()=>{
 const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement
     const [ scrollTop,clientHeight,scrollHeight ] = [ target.scrollTop, target.clientHeight, target.scrollHeight ]
-    console.log(scrollHeight - scrollTop,clientHeight)
     if (params.value.params != "" && scrollHeight - scrollTop <= clientHeight) {
         params.value.pages++
         messageStore.searchMessage(params.value)

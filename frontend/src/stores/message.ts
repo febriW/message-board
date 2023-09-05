@@ -5,10 +5,12 @@ import type CreateMessageType from "@/types/CreateMessageTypes"
 import type ApiMessageResponseType from "@/types/ApiMessageResponseType"
 import type SearchMessageType from "@/types/SearchMessageType"
 import type ApiUserResponse from "@/types/ApiUserResponseType"
+import type AxiosMessage from "@/types/AxiosMessageType"
 
 export const useMessageStore = defineStore('message', {
     state: () => ({
-        message: [] as MessageType[]
+        message: [] as MessageType[],
+        axios: [] as AxiosMessage[]
     }),
     actions: {
         async fetchData() {
@@ -22,18 +24,18 @@ export const useMessageStore = defineStore('message', {
         },
 
         async createMessage(params: CreateMessageType){
+
             try {
                 const response = await axios.post<ApiUserResponse>('user', {
                     "name" : params.name,
                     "email" : params.email
-                }).then((response) => {
-                    axios.post<ApiMessageResponseType>('message', {
-                        "user_id" : response.data.id,
-                        "message" : params.message 
-                    })
                 })
-            } catch (error) {
-                console.error(error)
+                axios.post<ApiMessageResponseType>('message', {
+                    "user_id" : response.data.id,
+                    "message" : params.message 
+                })
+            }catch(error: any){
+                this.axios = error.response
             }
         },
 
