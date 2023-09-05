@@ -10,7 +10,7 @@ import type AxiosMessage from "@/types/AxiosMessageType"
 export const useMessageStore = defineStore('message', {
     state: () => ({
         message: [] as MessageType[],
-        axios: [] as AxiosMessage[]
+        axios_message: <any>[]
     }),
     actions: {
         async fetchData() {
@@ -34,8 +34,15 @@ export const useMessageStore = defineStore('message', {
                     "user_id" : response.data.id,
                     "message" : params.message 
                 })
+                const res: AxiosMessage = {
+                    status: 200,
+                    data: "Created",
+                    statusText: "OK"
+                }
+                this.axios_message = res
             }catch(error: any){
-                this.axios = error.response
+                console.error(error.response)
+                this.axios_message = error.response
             }
         },
 

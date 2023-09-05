@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AlertMessage from '@/components/AlertMessage.vue'
 import IconMessage from '@/components/icons/IconMessage.vue'
 import IconSendMessage from '@/components/icons/IconSendMessage.vue'
 import StickyNote from '@/components/StickyNote.vue'
@@ -41,12 +42,10 @@ const params = ref({
 })
 
 const sendCreateMessage = async () => {
-    await messageStore.createMessage(form.value).then(()=>{
-        // setTimeout(()=>{location.reload()}, 500)
-    })
+    await messageStore.createMessage(form.value).then(()=>{closeModal(), messageStore.fetchData()})
 }
 
-computed(() => messageStore.message);
+computed(() => messageStore.message)
 
 const dataMessage = computed(()=>{
     if(params.value.params != ""){
@@ -80,6 +79,7 @@ const handleScroll = (event: Event) => {
                     <p>Message Board</p>
                 </div>
             </div>
+            <AlertMessage />
             <div class="p-6">
                 <form>   
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
